@@ -4,7 +4,7 @@ import seaborn as sns
 from wordcloud import WordCloud
 
 # Cargar los datos procesados
-movies_df = pd.read_csv('FastAPI\CSV\data_fastapi.csv')
+movies_df = pd.read_csv('CSV/data_fastapi.csv')
 
 # Resumen estadístico
 print("Resumen estadístico de las variables numéricas:")
@@ -14,21 +14,29 @@ print(movies_df.describe())
 print("\nCantidad de valores nulos en cada columna:")
 print(movies_df.isnull().sum())
 
-# Distribución de revenue
-plt.figure(figsize=(10, 6))
-sns.histplot(movies_df['revenue'], bins=50, kde=True)
-plt.title('Distribución de Revenue')
-plt.xlabel('Revenue')
-plt.ylabel('Frecuencia')
-plt.show()
+# Verificar la existencia de la columna 'revenue' antes de graficar
+if 'revenue' in movies_df.columns:
+    # Distribución de revenue
+    plt.figure(figsize=(10, 6))
+    sns.histplot(movies_df['revenue'], bins=50, kde=True)
+    plt.title('Distribución de Revenue')
+    plt.xlabel('Revenue')
+    plt.ylabel('Frecuencia')
+    plt.show()
+else:
+    print("\nLa columna 'revenue' no está presente en el DataFrame.")
 
-# Distribución de budget
-plt.figure(figsize=(10, 6))
-sns.histplot(movies_df['budget'], bins=50, kde=True)
-plt.title('Distribución de Budget')
-plt.xlabel('Budget')
-plt.ylabel('Frecuencia')
-plt.show()
+# Verificar la existencia de la columna 'budget' antes de graficar
+if 'budget' in movies_df.columns:
+    # Distribución de budget
+    plt.figure(figsize=(10, 6))
+    sns.histplot(movies_df['budget'], bins=50, kde=True)
+    plt.title('Distribución de Budget')
+    plt.xlabel('Budget')
+    plt.ylabel('Frecuencia')
+    plt.show()
+else:
+    print("\nLa columna 'budget' no está presente en el DataFrame.")
 
 # Distribución de años de lanzamiento
 plt.figure(figsize=(10, 6))
