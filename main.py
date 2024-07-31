@@ -8,7 +8,7 @@ app = FastAPI()
 
 # Definir la ruta relativa al archivo data_fastapi.csv
 base_dir = os.path.dirname(__file__)
-filepath = os.path.join(base_dir, "FastAPI/CSV/data_fastapi.csv")
+filepath = os.path.join(base_dir, "CSV/data_fastapi.csv")
 
 # Cargar el archivo procesado
 movies_df = pd.read_csv(filepath, low_memory=False)
